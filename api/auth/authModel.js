@@ -1,3 +1,6 @@
+const jwt = require('jsonwebtoken');
+const secrets = require('../config/secrets');
+
 module.exports = {
     generateToken
 }
