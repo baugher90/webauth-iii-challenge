@@ -2,13 +2,23 @@ const db = require('../../database/dbConfig');
 
 module.exports = {
   add,
-  find,
+  findDep,
+  findRole,
+  findAll,
   findBy,
   findById,
 };
 
-function find() {
-  return db('users').select('id', 'username', 'password');
+function findDep() {
+  return db('users').select('id', 'username', 'department');
+}
+
+function findRole() {
+  return db('users').select('id', 'username', 'role');
+}
+
+function findAll() {
+  return db('users').select('id', 'username', 'department', 'role');
 }
 
 function findBy(filter) {

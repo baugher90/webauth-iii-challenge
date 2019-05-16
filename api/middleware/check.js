@@ -1,6 +1,17 @@
 module.exports = {
     Department,
-    Role
+    Role,
+    check
+}
+
+function check(department,role) {
+    return function(req, res, next) {
+    if (req.decodedJWT.department && req.decodedJWT.department.includes(department) && req.decodedJWT.role && req.decodedJWT.role.includes(role)) {
+        next();
+    } else {
+        res.status(403).json({message:`Sorry that's not allowed here`})
+    }
+}
 }
 
 function Department(department) {
@@ -12,7 +23,6 @@ function Department(department) {
     }
 }
 }
-    
 
 function Role(role) {
     return function(req, res, next) {
